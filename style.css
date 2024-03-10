@@ -44,12 +44,12 @@ body {
   filter: drop-shadow(2px 2px 2px rgba(27, 26, 26, 0.8));
 }
 
-.swiper-button-prev{
+.swiper-button-prev {
   color: white;
   filter: drop-shadow(2px 2px 2px rgba(27, 26, 26, 0.8));
 }
 
-.swiper-button-next{
+.swiper-button-next {
   color: white;
   filter: drop-shadow(2px 2px 2px rgba(27, 26, 26, 0.8));
 }
