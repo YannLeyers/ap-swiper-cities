@@ -46,13 +46,22 @@ scene.add(globe);
 // Create a pin geometry and material
 let pinGeometry = new THREE.CylinderGeometry(0.05, 0.2, 1, 8);
 let pinMaterial = new THREE.MeshBasicMaterial({ color: 0xFF0000 });
-let pin = new THREE.Mesh(pinGeometry, pinMaterial);
 
-// Position the pin initially at the coordinates for Mexico
-let mexicoLatitude = 19.4326;
-let mexicoLongitude = -99.1332;
-updatePinPosition(mexicoLatitude, mexicoLongitude);
-globe.add(pin);
+// Position markers
+let markers = [
+  { name: 'Mexico', latitude: 19.4326, longitude: -99.1332 },
+  { name: 'Ukraine', latitude: 48.3794, longitude: 31.1656 },
+  { name: 'Georgia', latitude: 42.3154, longitude: 43.3569 },
+  { name: 'Morocco', latitude: 31.7917, longitude: -7.0926 },
+  { name: 'Chile', latitude: -35.6751, longitude: -71.543 },
+];
+
+// Add pins for each marker
+markers.forEach(marker => {
+  let pin = new THREE.Mesh(pinGeometry, pinMaterial);
+  updatePinPosition(pin, marker.latitude, marker.longitude);
+  globe.add(pin);
+});
 
 camera.position.z = 10;
 
@@ -103,7 +112,7 @@ function animate() {
 animate();
 
 // Function to update pin position based on latitude and longitude
-function updatePinPosition(latitude, longitude) {
+function updatePinPosition(pin, latitude, longitude) {
   let pinPosition = latLongToVector3(latitude, longitude, 5.1); // Adjust the radius accordingly
 
   // Position the pin at the surface of the globe
