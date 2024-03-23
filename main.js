@@ -36,28 +36,26 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.querySelector('.globe-container').appendChild(renderer.domElement);
 
 let textureLoader = new THREE.TextureLoader();
-let earthTexture = textureLoader.load('img/earthTexture.jpg'); // Adjust the path accordingly
+let earthTexture = textureLoader.load('img/earthTexture.jpg');
 
 let geometry = new THREE.SphereGeometry(5, 32, 32);
-let material = new THREE.MeshBasicMaterial({ map: earthTexture }); // Apply the texture to the material
+let material = new THREE.MeshBasicMaterial({ map: earthTexture });
 let globe = new THREE.Mesh(geometry, material);
 scene.add(globe);
 
-// Create a pin geometry and material
-let pinGeometry = new THREE.CylinderGeometry(0.05, 0.2, 1, 8);
-let pinMaterial = new THREE.MeshBasicMaterial({ color: 0xFF0000 });
-
-// Position markers
+// Position markers with colors
 let markers = [
-  { name: 'Mexico', latitude: 19.4326, longitude: -99.1332 },
-  { name: 'Ukraine', latitude: 48.3794, longitude: 31.1656 },
-  { name: 'Georgia', latitude: 42.3154, longitude: 43.3569 },
-  { name: 'Morocco', latitude: 31.7917, longitude: -7.0926 },
-  { name: 'Chile', latitude: -35.6751, longitude: -71.543 },
+  { name: 'Mexico', latitude: 19.4326, longitude: -99.1332, color: 0xFF0000 },
+  { name: 'Ukraine', latitude: 48.3794, longitude: 31.1656, color: 0x00FF00 },
+  { name: 'Georgia', latitude: 42.3154, longitude: 43.3569, color: 0x0000FF },
+  { name: 'Morocco', latitude: 31.7917, longitude: -7.0926, color: 0xFFFF00 },
+  { name: 'Chile', latitude: -35.6751, longitude: -71.543, color: 0xFF00FF },
 ];
 
-// Add pins for each marker
+// Add pins with colors for each marker
 markers.forEach(marker => {
+  let pinGeometry = new THREE.CylinderGeometry(0.05, 0.2, 1, 8);
+  let pinMaterial = new THREE.MeshBasicMaterial({ color: marker.color });
   let pin = new THREE.Mesh(pinGeometry, pinMaterial);
   updatePinPosition(pin, marker.latitude, marker.longitude);
   globe.add(pin);

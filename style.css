@@ -62,3 +62,61 @@ body {
   padding-top: 100vh;
   pointer-events: none;
 }
+
+.legend {
+  position: absolute;
+  top: 53%;
+  left: 3%;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 250px;
+}
+
+.legend h3 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  margin-right: 5px;
+}
+
+.mexico {
+  background-color: #FF0000;
+  /* Red */
+}
+
+.ukraine {
+  background-color: #00FF00;
+  /* Green */
+}
+
+.georgia {
+  background-color: #0000FF;
+  /* Blue */
+}
+
+.morocco {
+  background-color: #FFFF00;
+  /* Yellow */
+}
+
+.chile {
+  background-color: #FF00FF;
+  /* Magenta */
+}
+
+.legend-item span {
+  font-size: 14px;
+}
